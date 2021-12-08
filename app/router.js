@@ -4,41 +4,37 @@ const router = express.Router();
 //* Récupérer le fichier games.json
 const games = require('./data/games.json');
 
-//! tester si ça existe ou pas ? locals ? doc express 
 router.get('/', (request, response) => {
-
     response.render('index', {
-        isDiceRoller: false,
-        isRpgGame: false,
         games: games,
     });
 });
 
+
+// Chercher dans le tableau et comparer :nomDuJeu avec la clé name
+// et si === afficher le bon js et le bon css en s'appuyant sur les autres clés
 router.get('/game/:nomDuJeu', (request, response) => {
-    if (request.params.nomDuJeu === 'diceRoller') {
-        response.render('diceRoller', {
-            isDiceRoller: true,
-            isRpgGame: false,
-            games: games,
+
+    const gameObject = games.find(gameObject => gameObject.name === request.params.nomDuJeu);
+
+    if (gameObject) {
+        response.locals.gameObject = gameObject;
+        response.render(gameObject.name, {
+            games: games, 
+            gameObject: gameObject,
         });
-    } else if (request.params.nomDuJeu === 'fourchette') {
-        response.render('fourchette', {
-            isDiceRoller: false,
-            isRpgGame: false,
-            games: games,
-        });
-    } else if (request.params.nomDuJeu === 'rpgGame') {
-        response.render('rpgGame', {
-            isDiceRoller: false,
-            isRpgGame: true,
-            games: games,
-        });
+        console.log(gameObject.jsFile);
     } else {
         response.render('notFound', {
-            isDiceRoller: false,
             games: games,
-        })
+        });
     }
 });
+
+router.use(function (request, response, next) {
+    response.render('notFound', {
+        games: games
+    });
+  });
 
 module.exports = router;
