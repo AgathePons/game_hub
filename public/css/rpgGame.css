@@ -1,0 +1,52 @@
+body {
+  background: #ddd;
+  height: 100vh;
+}
+
+#rpgMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.player {
+  background-image: url('../images/sprite.png');
+  width: 28px;
+  height: 32px;
+  margin: 20px;
+  background-repeat: no-repeat;
+  background-position: top;
+  transform: scale(1.8);
+}
+
+.player--up {
+  background-position-y: -96px;
+}
+
+.player--right {
+  background-position-y: -64px;
+}
+
+.player--down {
+  background-position-y: 0px;
+}
+
+.player--left {
+  background-position-y: -32px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 70px;
+  height: 70px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.targetCell {
+  background-color: green;
+}

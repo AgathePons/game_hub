@@ -10,5 +10,11 @@
     "title": "Dice Roller",
     "cssFile": "diceRoller.css",
     "jsFile": "diceRoller.js"
+  },
+  {
+    "name": "rpgGame",
+    "title": "RPG Game",
+    "cssFile": "rpgGame.css",
+    "jsFile": "rpgGame.js"
   }
 ]

@@ -9,6 +9,7 @@ router.get('/', (request, response) => {
 
     response.render('index', {
         isDiceRoller: false,
+        isRpgGame: false,
         games: games,
     });
 });
@@ -17,13 +18,21 @@ router.get('/game/:nomDuJeu', (request, response) => {
     if (request.params.nomDuJeu === 'diceRoller') {
         response.render('diceRoller', {
             isDiceRoller: true,
+            isRpgGame: false,
             games: games,
         });
     } else if (request.params.nomDuJeu === 'fourchette') {
-            response.render('fourchette', {
-                isDiceRoller: false,
-                games: games,
-            });
+        response.render('fourchette', {
+            isDiceRoller: false,
+            isRpgGame: false,
+            games: games,
+        });
+    } else if (request.params.nomDuJeu === 'rpgGame') {
+        response.render('rpgGame', {
+            isDiceRoller: false,
+            isRpgGame: true,
+            games: games,
+        });
     } else {
         response.render('notFound', {
             isDiceRoller: false,

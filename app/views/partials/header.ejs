@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <% if (isDiceRoller) { %>
     <link rel="stylesheet" href="/css/diceRoller.css">
+    <% } else if (isRpgGame) { %>
+    <link rel="stylesheet" href="/css/rpgGame.css">
     <% } %>
 </head>
 
@@ -18,9 +20,9 @@
         <nav>
             <ul>
                 <% for (const game of games) {%>
-                    <li><a href="/game/<%- game.name %> "> <%- game.title  %>  </a></li>
+                <li><a href="/game/<%- game.name %> "> <%- game.title  %> </a></li>
                 <% } %>
-        
+
             </ul>
         </nav>
     </header>
