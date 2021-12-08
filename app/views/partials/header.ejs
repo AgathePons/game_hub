@@ -2,23 +2,25 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <title>GameHub</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <% if (isDiceRoller) { %> 
+    <meta charset="UTF-8">
+    <title>GameHub</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <% if (isDiceRoller) { %>
     <link rel="stylesheet" href="/css/diceRoller.css">
-    <% } %> 
+    <% } %>
 </head>
 
 <body>
-  <header>
-    <h1>
-      <a href="/">GameHub</a>
-    </h1>
-    <nav>
-      <ul>
-        <li><a href="/game/fourchette">Fourchette</a></li>
-        <li><a href="/game/diceRoller">Dice Roller</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>
+            <a href="/">GameHub</a>
+        </h1>
+        <nav>
+            <ul>
+                <% for (const game of games) {%>
+                    <li><a href="/game/<%- game.name %> "> <%- game.title  %>  </a></li>
+                <% } %>
+        
+            </ul>
+        </nav>
+    </header>
